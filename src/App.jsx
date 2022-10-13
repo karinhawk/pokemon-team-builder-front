@@ -1,38 +1,39 @@
 import { useEffect, useState } from 'react';
 import './App.scss';
+import Card from './Components/Card/Card';
+import Main from './Containers/Main/Main';
 
 function App() {
 
   const [pokemon, setPokemon] = useState([]);
-  
-  const loadPokemonData = async () => {
-    
-    for (let i = 0; i < 5; i++){
-      const id = i + 1;
+
+  const loadPokemonData = async (id) => {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/` + id);
       const data = await response.json();
-      setPokemon(data);
-  }  
+      setPokemon(data); 
 }
+
+const fetchAllPokemon = async () => {
+  for (let i = 0; i < 5; i++){
+    let id = i + 1;
+    loadPokemonData(id)
+  }
+}
+
 console.log(pokemon);
 
+
+
   useEffect(() => {
-    loadPokemonData()
+    fetchAllPokemon()
   }, []);
 
-  const mappedPokemon = pokemon.map((pokemon) => {
-    return (
-      <>
-      <p>{pokemon.name}</p>
-      <p>{pokemon.id}</p>
-      </>
-    );
-  })
 
 
   return (
     <div className="App">
-      {mappedPokemon}
+      <Main pokemonArr={pokemon}/>
+     
     </div>
   );
 }

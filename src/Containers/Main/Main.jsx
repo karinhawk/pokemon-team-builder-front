@@ -1,8 +1,11 @@
 import React from 'react'
+import CardList from '../CardList/CardList'
 
-const Main = () => {
+const Main = ({pokemonArr}) => {
   return (
-    <div>Main</div>
+    <div>
+        <CardList pokemonArr={pokemonArr} />
+    </div>
   )
 }
 

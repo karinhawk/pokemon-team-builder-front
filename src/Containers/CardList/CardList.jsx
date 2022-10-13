@@ -1,8 +1,15 @@
 import React from 'react'
+import Card from '../../Components/Card/Card'
 
-const CardList = () => {
+const CardList = ({pokemonArr}) => {
   return (
-    <div>CardList</div>
+    <div>
+        {pokemonArr.map((pokemon) => {
+            return (
+                <Card key={pokemon.id} name={pokemon.name}/>
+            )
+        })}
+    </div>
   )
 }
 
