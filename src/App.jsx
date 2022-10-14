@@ -12,39 +12,45 @@ import Trainer from "./Containers/Trainer/Trainer"
 
 function App() {
 
-  const [pokemon, setPokemon] = useState([]);
-  let pokemonArr = [];
-
-  const loadPokemonData = async (id) => {
-      let response = await fetch(`https://pokeapi.co/api/v2/pokemon`);
-      let data = await response.json();
-      setPokemon(data); 
-      for (let i = 0; i < 5; i++){
-        let id = i + 1;
-        response = await fetch(`https://pokeapi.co/api/v2/pokemon/` + id)
-        data = await response.json();
-        pokemonArr.push(data);
-      } 
-}
+  const [pokemon, setPokemon] = useState([])
 
 
-
-
-
-  useEffect(() => {
-    loadPokemonData()
-  }, []);
-
-  console.log(pokemonArr);
-
+  useEffect(()=>{
+    getPokemon()
+  },[])
+  
+  const showPokemon = () => {
+    console.log(pokemon)
+  }
+  
+  const getPokemon = async () =>{
+    const newPokemon = [...pokemon]
+    
+    for (let i = 1; i < 1000; i++) {
+      const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
+      const response = await res.json()
+      
+      const pokemonObj = {
+        id: response.id,
+        name: response.name,
+        image: [response.sprites],
+        types: [response.types]
+      }
+      
+      newPokemon.push(pokemonObj)
+      setPokemon(newPokemon)
+    }
+    
+  }
 
 
   return (
     // <Router>
     <div className="App">
       <Top />
+      <button onClick={showPokemon}>Show Pokemon</button>
       <div className='main-content'>
-        <Main pokemonArr={pokemonArr}/>
+        <Main pokemonArr={pokemon}/>
       {/* <Routes>
         <Route path='/' element={<Main />}>
         <Route path='/pokedex' element={<Pokedex />} /> 
