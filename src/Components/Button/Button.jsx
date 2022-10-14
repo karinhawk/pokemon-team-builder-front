@@ -1,8 +1,11 @@
 import React from 'react'
+import "./Button.scss"
 
-const Button = () => {
+const Button = ({buttonFunction}) => {
   return (
-    <div>Button</div>
+    <div>
+      <button className='button' onClick={buttonFunction}></button>
+    </div>
   )
 }
 

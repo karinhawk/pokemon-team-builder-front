@@ -1,9 +1,11 @@
 import React from 'react'
 import CardList from '../CardList/CardList'
+import "./Main.scss"
 
-const Main = ({pokemonArr}) => {
+const Main = ({ pokemonArr }) => {
+  
   return (
-    <div>
+    <div className='main'>
         <CardList pokemonArr={pokemonArr} />
     </div>
   )
