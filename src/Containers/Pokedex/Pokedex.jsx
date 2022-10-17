@@ -1,8 +1,11 @@
-import React from 'react'
+import "./Pokedex.scss"
+import CardList from "../CardList/CardList"
 
-const Pokedex = () => {
+const Pokedex = ({ pokemonArr }) => {
   return (
-    <div>Pokedex</div>
+    <div className="pokedex">
+      <CardList pokemonArr={pokemonArr} />
+    </div>
   )
 }
 

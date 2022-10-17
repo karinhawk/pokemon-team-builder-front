@@ -5,23 +5,27 @@ import "./Nav.scss"
 const Nav = () => {
   return (
     <ul className="nav">
-  <li className="nav-item">
-  {/* <Link to='/'> */}
-    <h2 className="nav-link">Home</h2>
-    {/* </Link> */}
-  </li>
-  <li className="nav-item">
-    {/* <Link to='/team'> */}
-    <h2 className="nav-link" href="#">Team</h2>
-    {/* </Link> */}
-  </li>
-  <li className="nav-item">
-    <h2 className="nav-link" href="#">Pokedex</h2>
-  </li>
-  <li className="nav-item">
-    <h2 className="nav-link" href="#">Trainer</h2>
-  </li>
-</ul>
+      {/* <Link to="/"> */}
+        <li className="nav-item">
+          <h2 className="nav-link">Home</h2>
+        </li>
+      {/* </Link> */}
+      {/* <Link to="/team"> */}
+        <li className="nav-item">
+          <h2 className="nav-link">Team</h2>
+        </li>
+      {/* </Link>
+      <Link to="/pokedex"> */}
+      <li className="nav-item">
+        <h2 className="nav-link">Pokedex</h2>
+      </li>
+      {/* </Link>
+      <Link to="trainer"> */}
+      <li className="nav-item">
+        <h2 className="nav-link">Trainer</h2>
+      </li>
+      {/* </Link> */}
+    </ul>
   )
 }
 

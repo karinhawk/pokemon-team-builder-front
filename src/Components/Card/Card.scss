@@ -6,16 +6,20 @@
 .card {
     height: 50vh;
     width: 20vw;
-    border: 1px solid black;
+    margin: 1rem;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
 
+    &:hover {
+        opacity: 20%;
+    }
+
     &__image {
         height: 30vh;
-        width: 18vw;
-        border: 1px solid black;
+        width: auto;
+        
     }
 }

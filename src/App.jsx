@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Route, Router, Routes } from 'react-router-dom';
+import { HashRouter as Route, Router, Routes } from 'react-router-dom';
 import './App.scss';
-import Main from './Containers/Main/Main';
 import Top from './Containers/Top/Top';
 import Pokedex from "./Containers/Pokedex/Pokedex";
 import Team from "./Containers/Team/Team"
 import Trainer from "./Containers/Trainer/Trainer"
+import Home from "./Containers/Home/Home"
 
 
 
@@ -34,7 +34,7 @@ function App() {
         id: response.id,
         name: response.name,
         image: [response.sprites],
-        types: [response.types]
+        types: response.types
       }
       
       newPokemon.push(pokemonObj)
@@ -50,13 +50,12 @@ function App() {
       <Top />
       <button onClick={showPokemon}>Show Pokemon</button>
       <div className='main-content'>
-        <Main pokemonArr={pokemon}/>
+        <Pokedex pokemonArr={pokemon}/>
       {/* <Routes>
-        <Route path='/' element={<Main />}>
-        <Route path='/pokedex' element={<Pokedex />} /> 
-        <Route path='/team' element={<Team/>}/>
-        <Route path='/trainer' element={<Trainer />}/>
-      </Route>
+        <Route path="/pokedex" element={<Pokedex pokemonArr={pokemon} />} /> 
+        <Route path="/team" element={<Team/>}/>
+        <Route path="/trainer" element={<Trainer />}/>
+        <Route path="/" element={<Home />}/>
       </Routes>   */}
       </div> 
     </div>
