@@ -1,10 +1,10 @@
 import React from 'react'
 import "./Button.scss"
 
-const Button = ({buttonFunction}) => {
+const Button = ({buttonFunction, buttonText, style, type}) => {
   return (
     <div>
-      <button className='button' onClick={buttonFunction}></button>
+      <button className={style} onClick={buttonFunction} type={type}>{buttonText}</button>
     </div>
   )
 }

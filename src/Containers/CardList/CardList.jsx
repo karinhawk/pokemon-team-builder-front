@@ -10,7 +10,7 @@ const CardList = ({pokemonArr}) => {
         ? pokemonArr.map(pokemon => {
             return (
               <div>
-                <Card key={pokemon.id} id={pokemon.id} name={pokemon.name} images={pokemon.image} typesArr={pokemon.types}/>
+                <Card key={pokemon.id} pokemonId={pokemon.id} name={pokemon.name} images={pokemon.image} typesArr={pokemon.type}/>
                 </div>
         )})
         : null}

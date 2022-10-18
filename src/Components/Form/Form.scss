@@ -1,0 +1,25 @@
+.form {
+    height: 35vh;
+    width: 40vw;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(239, 246, 245);
+
+    &__input {
+        width: 25vw;
+    }
+
+    &__select {
+        width: 25vw;
+    }
+
+    &__label-input {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+}

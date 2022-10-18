@@ -1,0 +1,35 @@
+.button {
+    border: none;
+    border-radius: 1rem;
+}
+
+.medium {
+    height: 2rem;
+    width: fit-content;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1rem;
+}
+
+.large {
+    height: 4rem;
+    width: fit-content;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-size: 2rem;
+}
+
+.red {
+    background-color: rgb(237, 86, 86);
+}
+
+.blue {
+    background-color: rgb(143, 179, 255);
+}
+
+.green {
+    background-color: rgb(116, 238, 78);
+    &:hover {
+        background-color: rgb(57, 193, 57);
+    }
+}

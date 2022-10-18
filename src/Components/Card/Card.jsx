@@ -1,17 +1,20 @@
+import { Link } from "react-router-dom";
 import "./Card.scss"
 
-const Card = ({id, images, name, typesArr}) => {
+const Card = ({pokemonId, images, name, typesArr}) => {
 
-const image = images[0].front_default;
-const type1 = typesArr[0];
-
-
+const image = images.hires;
+const pokemonName = name.english;
+const pokemonType = typesArr.join(" / ");
 
   return (
     <div className='card'>
+      <Link to={`/pokedex/${pokemonId}`}>
        <img className="card__image" src={image} alt="" />
-       <h2 className="card__heading">{name}</h2>
-       <h3 className="card__types">{id}</h3>
+       </Link>
+       <h2 className="card__heading">{pokemonName}</h2>
+       <h2 className="card__types">{pokemonType}</h2>
+       <h3 className="card__types">{pokemonId}</h3>
     </div>
   )
 }
