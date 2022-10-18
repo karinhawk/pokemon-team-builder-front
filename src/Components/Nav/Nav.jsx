@@ -1,30 +1,30 @@
+import "./Nav.scss"
 import React from 'react'
 import { Link } from 'react-router-dom'
-import "./Nav.scss"
 
 const Nav = () => {
   return (
     <ul className="nav">
-      {/* <Link to="/"> */}
+      <Link to="/">
         <li className="nav-item">
           <h2 className="nav-link">Home</h2>
         </li>
-      {/* </Link> */}
-      {/* <Link to="/team"> */}
+      </Link>
+      <Link to="/team">
         <li className="nav-item">
           <h2 className="nav-link">Team</h2>
         </li>
-      {/* </Link>
-      <Link to="/pokedex"> */}
+      </Link>
+      <Link to="/pokedex">
       <li className="nav-item">
         <h2 className="nav-link">Pokedex</h2>
       </li>
-      {/* </Link>
-      <Link to="trainer"> */}
+      </Link>
+      <Link to="/trainer">
       <li className="nav-item">
         <h2 className="nav-link">Trainer</h2>
       </li>
-      {/* </Link> */}
+      </Link>
     </ul>
   )
 }

@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { HashRouter as Route, Router, Routes } from 'react-router-dom';
 import './App.scss';
+import { useEffect, useState } from 'react';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Top from './Containers/Top/Top';
 import Pokedex from "./Containers/Pokedex/Pokedex";
 import Team from "./Containers/Team/Team"
@@ -45,21 +45,21 @@ function App() {
 
 
   return (
-    // <Router>
     <div className="App">
+    <Router>
       <Top />
       <button onClick={showPokemon}>Show Pokemon</button>
       <div className='main-content'>
-        <Pokedex pokemonArr={pokemon}/>
-      {/* <Routes>
+        {/* <Pokedex pokemonArr={pokemon}/> */}
+      <Routes>
         <Route path="/pokedex" element={<Pokedex pokemonArr={pokemon} />} /> 
         <Route path="/team" element={<Team/>}/>
         <Route path="/trainer" element={<Trainer />}/>
         <Route path="/" element={<Home />}/>
-      </Routes>   */}
+      </Routes> 
       </div> 
+    </Router>
     </div>
-    // </Router>
   );
 }
 
