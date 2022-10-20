@@ -15,25 +15,26 @@ function App() {
 
   const [pokemon, setPokemon] = useState([]);
 
+  const getPokemon = async () => {
+    const res = await fetch("http://localhost:8080/pokemon")
+    const data = await res.json()
+    setPokemon(data)
+  }
+
+  console.log(pokemon);
 
   useEffect(()=>{
     getPokemon()
   },[])
-
-  const getPokemon = async () => {
-    const res = await fetch("https://api.pikaserve.xyz/pokemon/all")
-    const data = await res.json()
-    setPokemon(data)
-  }
-  
+ 
   return (
-    <div className="App">
+    <div className="app">
     <Router>
       <Top />
       <div className='main-content'>
       <Routes>
-        <Route path="/pokedex" element={<Pokedex pokemonArr={pokemon} />} /> 
-        <Route path="/pokedex/:pokemonId" element={<PokemonPage pokemonArr={pokemon} />} />
+        <Route path="/pokedex" element={<Pokedex pokemon={pokemon}/>} /> 
+        <Route path="/pokemon/:id" element={<PokemonPage pokemonArr={pokemon}/>} />
         <Route path="/team" element={<Team/>}/>
         <Route path="/trainer" element={<Trainer />}/>
         <Route path="/" element={<Home />}/>

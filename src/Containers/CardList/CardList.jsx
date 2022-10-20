@@ -1,21 +1,19 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Card from '../../Components/Card/Card'
 import "./CardList.scss"
 
 const CardList = ({pokemonArr}) => {
   return (
-    <div>
+    <>
       <section className='card-list'>
-        {Array.isArray(pokemonArr)
-        ? pokemonArr.map(pokemon => {
-            return (
-              <div>
-                <Card key={pokemon.id} pokemonId={pokemon.id} name={pokemon.name} images={pokemon.image} typesArr={pokemon.type}/>
-                </div>
-        )})
-        : null}
+        {pokemonArr.map(pokemon => (
+                <Link key={pokemon.id} to={`/pokemon/${pokemon.id}`}>
+                <Card pokemon={pokemon}/>
+                </Link>
+        ))}
         </section>
-    </div>
+    </>
   )
 }
 
