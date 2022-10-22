@@ -8,13 +8,13 @@ const Trainer = () => {
   const [name, setName] = useState();
   const [avatar, setAvatar] = useState(1);
 
+  const defaultFormState = { name: "", avatar: "", favouritePokemon: ""};
 
   return (
     <div className='trainer'>
       <div className="trainer__avatar">
-        
       </div>
-      <Form/>
+      <Form  defaultFormState={defaultFormState}/>
     </div>
   )
 }

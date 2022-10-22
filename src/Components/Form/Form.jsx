@@ -2,7 +2,7 @@ import { useState } from "react"
 import Button from "../Button/Button"
 import "./Form.scss"
 
-const Form = ({changeName, changeAvatar}) => {
+const Form = ({changeName, changeAvatar, defaultFormState, handleSubmit}) => {
 
 
     const setInputs = (e) => {

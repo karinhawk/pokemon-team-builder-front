@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import Button from "../../Components/Button/Button";
 import "./PokemonPage.scss"
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import Button from "../../Components/Button/Button";
+
 
 const PokemonPage = ({pokemonArr}) => {
   const { id } = useParams();
   const [pokemon, setPokemon] = useState([]);
+  const navigate = useNavigate();
 
   const chosenPokemon = pokemonArr.find((pokemon) => { return pokemon.id == id });
 
@@ -21,10 +23,19 @@ const PokemonPage = ({pokemonArr}) => {
     getPokemonById(id);
   }, [id]);
 
-
-
-    // const name = ((chosenPokemon || {}).name|| {}).english;
-    // const image = ((chosenPokemon || {}).image || {}).hires;
+  const updatePokemon = async chosenPokemon => {
+    const response = await fetch(`http://localhost:8080/pokemon/${id}`, {
+    method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(chosenPokemon.innerHTML),
+    })
+    setPokemon(chosenPokemon);
+    console.log(chosenPokemon);
+    navigate('/pokedex')
+  }
     
 
   return (
@@ -36,7 +47,7 @@ const PokemonPage = ({pokemonArr}) => {
         <h3 className="pokemon-page__types">{pokemon.type}</h3>
         <h3 className="pokemon-page__description">{pokemon.description}</h3>
         <div className="pokemon-page__button-div">
-        <Button style={"button large green"} buttonText={"ADD TO TEAM"}/>
+        <Button style={"button large green"} buttonText={"ADD TO TEAM"} buttonFunction={updatePokemon}/>
         <Link to="/pokedex">
         <Button style={"button medium blue"} buttonText={"BACK TO POKEDEX"} />
         </Link>

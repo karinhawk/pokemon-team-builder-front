@@ -13,6 +13,19 @@ import PokemonPage from './Containers/PokemonPage/PokemonPage';
 
 function App() {
 
+
+//paginate pokedex
+//pokemon types colours
+//make pretty!
+//hover on card to reveal name?
+//make header fancy
+
+
+
+
+
+
+
   const [pokemon, setPokemon] = useState([]);
 
   const getPokemon = async () => {
