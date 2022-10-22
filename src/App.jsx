@@ -4,9 +4,10 @@ import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Top from './Containers/Top/Top';
 import Pokedex from "./Containers/Pokedex/Pokedex";
 import Team from "./Containers/Team/Team"
-import Trainer from "./Containers/Trainer/Trainer"
+import CreateTrainer from "./Containers/CreateTrainer/CreateTrainer"
 import Home from "./Containers/Home/Home"
 import PokemonPage from './Containers/PokemonPage/PokemonPage';
+import ViewTrainer from './Containers/ViewTrainer/ViewTrainer';
 
 
 
@@ -19,11 +20,6 @@ function App() {
 //make pretty!
 //hover on card to reveal name?
 //make header fancy
-
-
-
-
-
 
 
   const [pokemon, setPokemon] = useState([]);
@@ -48,8 +44,9 @@ function App() {
       <Routes>
         <Route path="/pokedex" element={<Pokedex pokemon={pokemon}/>} /> 
         <Route path="/pokemon/:id" element={<PokemonPage pokemonArr={pokemon}/>} />
-        <Route path="/team" element={<Team/>}/>
-        <Route path="/trainer" element={<Trainer />}/>
+        <Route path="/team" element={<Team pokemonArr={pokemon}/>}/>
+        <Route path="/create-trainer" element={<CreateTrainer />}/>
+        <Route path="/view-trainer" element={<ViewTrainer />}/>
         <Route path="/" element={<Home />}/>
       </Routes> 
       </div> 

@@ -2,32 +2,59 @@ import { useState } from "react"
 import Button from "../Button/Button"
 import "./Form.scss"
 
-const Form = ({changeName, changeAvatar, defaultFormState, handleSubmit}) => {
+const Form = ({ defaultFormState, handleSubmit }) => {
 
 
-    const setInputs = (e) => {
-        e.preventDefault();
-        // console.log(name);
-        // console.log(avatar);
-    }
+    const [trainer, setTrainer] = useState(defaultFormState);
 
-  return (
-        <form action="submit"  onSubmit={setInputs} className='form'>
+    const handleValidation = event => {
+        event.preventDefault();
+
+        if (Object.values(trainer).some(value => !value)) {
+            alert("you haven't filled out some of the boxes!");
+            return;
+        }
+
+        handleSubmit(trainer);
+    };
+
+    return (
+        <form action="submit" onSubmit={handleValidation} className='form'>
             <h2>Create Your Trainer!</h2>
             <div className="form__label-input">
-            <label className="form__label" htmlFor="name-input">Type a name</label>
-            <input className="form__input" type="text" name="name-input" onChange={changeName}/>
+                <label className="form__label" htmlFor="name-input">Type a name</label>
+                <input
+                    className="form__input"
+                    type="text"
+                    name="name-input"
+                    value={trainer.name}
+                    onInput={event => setTrainer({ ...trainer, name: event.target.value })}
+                />
             </div>
             <div className="form__label-input">
-            <label className="form__label" htmlFor="select-input">Choose a look</label>
-            <select className="form__select" name="select-input" onChange={changeAvatar} >
-                <option value="1">1</option>
-                <option value="2">2</option>
-            </select>
+                <label className="form__label" htmlFor="select-input">Choose a look</label>
+                <select className="form__select" name="select-input" onClick={event => setTrainer({ ...trainer, avatar: event.target.value })}>
+                    <option disabled selected>select your trainer avatar!
+                    </option>
+                    <option value={1}>1
+                    </option>
+                    <option value={2}>2
+                    </option>
+                </select>
             </div>
-            <Button buttonText={"Create!"} style={"button medium blue"} type={"submit"}/>
+            <div className="form__label-input">
+                <label className="form__label" htmlFor="name-input">Enter your favourite pokemon</label>
+                <input
+                    className="form__input"
+                    type="text"
+                    name="name-input"
+                    value={trainer.favouritePokemon}
+                    onInput={event => setTrainer({ ...trainer, favouritePokemon: event.target.value })}
+                />
+            </div>
+            <Button buttonText={"Create!"} style={"button medium blue"} type={"submit"} />
         </form>
-  )
+    )
 }
 
 export default Form

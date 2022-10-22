@@ -20,7 +20,7 @@ const Nav = () => {
         <h2 className="nav-link">Pokedex</h2>
       </li>
       </Link>
-      <Link to="/trainer">
+      <Link to="/view-trainer">
       <li className="nav-item">
         <h2 className="nav-link">Trainer</h2>
       </li>

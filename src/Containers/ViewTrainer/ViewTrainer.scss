@@ -1,0 +1,12 @@
+.view-trainer {
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    &__avatar {
+        height: 80vh;
+        width: auto;
+    }
+}

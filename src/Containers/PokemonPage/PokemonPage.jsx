@@ -46,6 +46,7 @@ const PokemonPage = ({pokemonArr}) => {
         <h3 className="pokemon-page__species">{pokemon.species}</h3>
         <h3 className="pokemon-page__types">{pokemon.type}</h3>
         <h3 className="pokemon-page__description">{pokemon.description}</h3>
+        <h3>{pokemon.trainer}</h3>
         <div className="pokemon-page__button-div">
         <Button style={"button large green"} buttonText={"ADD TO TEAM"} buttonFunction={updatePokemon}/>
         <Link to="/pokedex">
