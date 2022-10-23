@@ -8,6 +8,7 @@ import CreateTrainer from "./Containers/CreateTrainer/CreateTrainer"
 import Home from "./Containers/Home/Home"
 import PokemonPage from './Containers/PokemonPage/PokemonPage';
 import ViewTrainer from './Containers/ViewTrainer/ViewTrainer';
+import EditTrainer from './Containers/EditTrainer/EditTrainer';
 
 
 
@@ -47,6 +48,7 @@ function App() {
         <Route path="/team" element={<Team pokemonArr={pokemon}/>}/>
         <Route path="/create-trainer" element={<CreateTrainer />}/>
         <Route path="/view-trainer" element={<ViewTrainer />}/>
+        <Route path="/edit-trainer" element={<EditTrainer />} />
         <Route path="/" element={<Home />}/>
       </Routes> 
       </div> 

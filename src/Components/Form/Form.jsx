@@ -2,7 +2,7 @@ import { useState } from "react"
 import Button from "../Button/Button"
 import "./Form.scss"
 
-const Form = ({ defaultFormState, handleSubmit }) => {
+const Form = ({ defaultFormState, handleSubmit, formFunction }) => {
 
 
     const [trainer, setTrainer] = useState(defaultFormState);
@@ -20,9 +20,9 @@ const Form = ({ defaultFormState, handleSubmit }) => {
 
     return (
         <form action="submit" onSubmit={handleValidation} className='form'>
-            <h2>Create Your Trainer!</h2>
+            <h2>{formFunction} Your Trainer!</h2>
             <div className="form__label-input">
-                <label className="form__label" htmlFor="name-input">Type a name</label>
+                <label className="form__label" htmlFor="name-input">Name</label>
                 <input
                     className="form__input"
                     type="text"
