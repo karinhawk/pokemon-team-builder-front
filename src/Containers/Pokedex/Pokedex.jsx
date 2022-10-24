@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 
 const Pokedex = ({pokemon}) => {
 
-  
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState(null);
@@ -24,6 +23,7 @@ const Pokedex = ({pokemon}) => {
       setFilter(pokemon);
     }
   }
+
 
   return (
     <div className="pokedex">

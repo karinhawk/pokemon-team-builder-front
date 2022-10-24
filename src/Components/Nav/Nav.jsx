@@ -43,7 +43,7 @@ const Nav = () => {
         <h2 className="nav-link">Pokedex</h2>
       </li>
       </Link>
-      {showLink && <Link to="/view-trainer">
+      {showLink && <Link to={`/view-trainer/${trainer[0].id}`}>
       <li className="nav-item">
         <h2 className="nav-link">Trainer</h2>
       </li>

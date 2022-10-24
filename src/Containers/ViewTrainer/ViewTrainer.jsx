@@ -4,18 +4,21 @@ import Gold from "../../assets/gold.png"
 import May from "../../assets/may.png"
 import Button from "../../Components/Button/Button";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import Modal from "../../Components/Modal/Modal";
 
 const ViewTrainer = () => {
 
   const { id } = useParams();
-  const navigate = useNavigate
+  const navigate = useNavigate();
   const [avatar, setAvatar] = useState();
   const [trainer, setTrainer] = useState([]);
+  const [showModal, setShowModal] = useState(false)
 
   const url = window.location.pathname.split('/').pop();
 
-  const getTrainer = async () => {
-    const res = await fetch("http://localhost:8080/trainer")
+
+  const getTrainerById = async (id) => {
+    const res = await fetch(`http://localhost:8080/trainer/${id}`)
     const data = await res.json()
     setTrainer(data)
     console.log(trainer);
@@ -27,14 +30,25 @@ const ViewTrainer = () => {
   }
 
   useEffect(() => {
-    getTrainer()
-  }, [url, trainer.length])
+    getTrainerById(id)
+  }, [id, url])
 
-  const handleDeleteGreeting = async (id) => {
-    await fetch(`http://localhost:8080/greeting/${id}`,
-    { method: 'DELETE'})
-    navigate('/greetings')
-  };
+  const handleDeleteTrainer = async (id) => {
+    await fetch(`http://localhost:8080/trainer/${trainer.id}`,{
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  });
+  navigate("/");
+  window.location.reload();
+}
+
+  const toggleModal = () => {
+    console.log("hi");
+    setShowModal(!showModal)
+  }
 
 
 
@@ -42,33 +56,16 @@ const ViewTrainer = () => {
     <div className="view-trainer">
       <img className="view-trainer__avatar" src={avatar} alt="A peppy looking pokemon trainer" />
       <div className="view-trainer__main">
-      <p>{trainer.name}</p>
-      <div className="view-trainer__buttons">
-      <Link to={"/edit-trainer"}>
-      <Button style={"blue medium"} buttonText={"Edit trainer"} />
-      </Link>
-      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+      {showModal && <Modal toggleModal={toggleModal} handleDeleteTrainer={handleDeleteTrainer}/>}
+        <p>{trainer.name}</p>
+        <div className="view-trainer__buttons">
+          <Link to={`/edit-trainer/${trainer.id}`}>
+            <Button style={"blue medium"} buttonText={"Edit trainer"} />
+          </Link>
+        <Button buttonFunction={toggleModal} style={"red medium"} buttonText={"Delete Trainer"}/>
+        </div>
       </div>
       </div>
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        <p>Some text in the modal.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-    </div>
   )
 }
 

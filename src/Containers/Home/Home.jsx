@@ -46,7 +46,7 @@ const Home = () => {
           <Link to='/team'>
           <Button style={"large blue"} buttonText={"Check out Team"}/>
           </Link>
-          <Link to='/view-trainer'>
+          <Link to={`/view-trainer/${trainer[0].id}`}>
           <Button style={"large yellow"} buttonText={"Check the mirror"}/>
           </Link>
         </div>

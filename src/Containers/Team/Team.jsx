@@ -1,9 +1,12 @@
 import "./Team.scss"
 import React, { useEffect, useState } from 'react'
+import Button from "../../Components/Button/Button";
+import { Link } from "react-router-dom";
 
 const Team = () => {
 
   const [pokemon, setPokemon] = useState([]);
+  const [showButtons, setShowButtons] = useState(false);
 
   const getPokemon = async () => {
     const res = await fetch("http://localhost:8080/pokemon")
@@ -21,6 +24,9 @@ const Team = () => {
     getPokemon()
   },[])
 
+  const toggleButtons = () => {
+    setShowButtons(!showButtons)
+  }
 
   return (
     <div className='team'>
@@ -29,10 +35,16 @@ const Team = () => {
         return (
           <div className="team__pokemon">
             <img className="team__pokemon__image" src={pokemon.sprite} alt={pokemon.name} />
+          {showButtons && <div>
+            <Link key={pokemon.id} to={`/pokemon/${pokemon.id}`}>
+            <Button style={"blue medium"} buttonText={"View"}/>
+            </Link>
+            </div>}
           </div>
         )
       })}
     </div>
+    <Button buttonText={"Edit Team"} style={"blue medium"} buttonFunction={toggleButtons}/>
     </div>
   )
 }

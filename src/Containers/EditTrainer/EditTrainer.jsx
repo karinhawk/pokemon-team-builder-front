@@ -10,15 +10,15 @@ const EditTrainer = () => {
 
     const url = window.location.pathname.split('/').pop();
 
-    const getTrainer = async () => {
-        const res = await fetch("http://localhost:8080/trainer")
+    const getTrainerById = async id => {
+        const res = await fetch(`http://localhost:8080/trainer/${id}`)
         const data = await res.json()
         setTrainer(data)
         console.log(trainer);
       }
 
       const handleUpdateTrainer = async trainer => {
-        const response = await fetch(`http://localhost:8080/trainer/${trainer.id}`, {
+        const response = await fetch(`http://localhost:8080/trainer/${id}`, {
              method: "PUT",
              headers: {
                Accept: "application/json",
@@ -31,13 +31,13 @@ const EditTrainer = () => {
          };
 
       useEffect(() => {
-        getTrainer()
-        handleUpdateTrainer(id)
-      }, [url, trainer.length, id])
+        getTrainerById(id)
+      }, [id])
 
+      
   return (
     <div className="edit">
-        <Form defaultFormState={trainer} handleSubmit={handleUpdateTrainer} formFunction={"Edit"}/>
+        <Form defaultFormState={trainer} handleSubmit={handleUpdateTrainer} formFunction={"Edit"} />
     </div>
   )
 }

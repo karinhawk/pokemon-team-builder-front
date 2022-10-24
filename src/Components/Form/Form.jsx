@@ -4,7 +4,6 @@ import "./Form.scss"
 
 const Form = ({ defaultFormState, handleSubmit, formFunction }) => {
 
-
     const [trainer, setTrainer] = useState(defaultFormState);
 
     const handleValidation = event => {

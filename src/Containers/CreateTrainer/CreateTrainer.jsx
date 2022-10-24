@@ -25,6 +25,7 @@ const Trainer = () => {
     console.log(data);
     // getTrainer();
     navigate("/")
+    window.location.reload();
   };
 
 

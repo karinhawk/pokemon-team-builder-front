@@ -1,0 +1,28 @@
+.modal {
+    background-color: rgba(black, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    &__content {
+        position: relative;
+        background-color: rgb(223, 240, 218);
+        width: 30%;
+        height: 30vw;
+        border-radius: 15px;
+
+      &__buttons {
+        position: relative;
+        display: flex;
+        justify-content: space-around;
+      }
+    }
+  
+    &__cross {
+        right: 2rem;
+  
+      &:hover {
+        cursor: pointer;
+      }
+    }
+}

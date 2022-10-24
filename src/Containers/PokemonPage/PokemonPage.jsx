@@ -7,6 +7,7 @@ import Button from "../../Components/Button/Button";
 const PokemonPage = ({pokemonArr}) => {
   const { id } = useParams();
   const [pokemon, setPokemon] = useState([]);
+  const [text, setText] = useState("Add");
   const navigate = useNavigate();
 
   const chosenPokemon = pokemonArr.find((pokemon) => { return pokemon.id == id });
@@ -15,13 +16,20 @@ const PokemonPage = ({pokemonArr}) => {
     const response = await fetch(`http://localhost:8080/pokemon/${id}`);
     const data = await response.json();
     setPokemon(data);
+    if(chosenPokemon.trainer !== undefined && chosenPokemon.trainer !== null){
+      setText("Remove")
+    } else {
+      setText("Add")
+    }
   };
+
 
   console.log(pokemon);
   
   useEffect(() => {
     getPokemonById(id);
-  }, [id]);
+  }, []);
+
 
   const updatePokemon = async chosenPokemon => {
     const response = await fetch(`http://localhost:8080/pokemon/${id}`, {
@@ -35,7 +43,9 @@ const PokemonPage = ({pokemonArr}) => {
     setPokemon(chosenPokemon);
     console.log(chosenPokemon);
     navigate('/pokedex')
+    window.location.reload();
   }
+
     
 
   return (
@@ -48,7 +58,7 @@ const PokemonPage = ({pokemonArr}) => {
         <h3 className="pokemon-page__description">{pokemon.description}</h3>
         <h3>{pokemon.trainer}</h3>
         <div className="pokemon-page__button-div">
-        <Button style={"button large green"} buttonText={"ADD TO TEAM"} buttonFunction={updatePokemon}/>
+        <Button style={"button large green"} buttonText={text} buttonFunction={updatePokemon}/>
         <Link to="/pokedex">
         <Button style={"button medium blue"} buttonText={"BACK TO POKEDEX"} />
         </Link>
