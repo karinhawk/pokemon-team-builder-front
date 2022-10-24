@@ -6,32 +6,28 @@ import Button from "../../Components/Button/Button";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Modal from "../../Components/Modal/Modal";
 
-const ViewTrainer = () => {
+const ViewTrainer = ({pokemon}) => {
 
   const { id } = useParams();
   const navigate = useNavigate();
-  const [avatar, setAvatar] = useState();
   const [trainer, setTrainer] = useState([]);
   const [showModal, setShowModal] = useState(false)
+  const [favPokemon, setFavPokemon] = useState();
 
   const url = window.location.pathname.split('/').pop();
 
+  useEffect(() => {
+    getTrainerById(id)
+  }, [id, trainer.favouritePokemon])
 
   const getTrainerById = async (id) => {
     const res = await fetch(`http://localhost:8080/trainer/${id}`)
     const data = await res.json()
     setTrainer(data)
     console.log(trainer);
-    if (trainer.avatar == 1) {
-      setAvatar(Gold)
-    } else {
-      setAvatar(May)
-    }
+    showPokemon(pokemon)
   }
 
-  useEffect(() => {
-    getTrainerById(id)
-  }, [id, url])
 
   const handleDeleteTrainer = async (id) => {
     await fetch(`http://localhost:8080/trainer/${trainer.id}`,{
@@ -50,19 +46,28 @@ const ViewTrainer = () => {
     setShowModal(!showModal)
   }
 
+  const showPokemon = (pokemon) => {
+    const trainerFav = trainer.favouritePokemon.toLowerCase();
+    const favouritePokemon = pokemon.find((pokemon) => { return pokemon.name.toLowerCase() == trainerFav });
+    const pic = favouritePokemon.hires;
+    setFavPokemon(pic);
+}
 
 
   return (
     <div className="view-trainer">
-      <img className="view-trainer__avatar" src={avatar} alt="A peppy looking pokemon trainer" />
-      <div className="view-trainer__main">
+      <div className="view-trainer__images">
+      <img className="view-trainer__avatar" src={trainer.avatar == 1 ? May : Gold} alt="A peppy looking pokemon trainer" />
+      <img className="view-trainer__pokemon" src={favPokemon} alt={pokemon.name}/>
+      </div>
+      <div className="view-trainer__text">
       {showModal && <Modal toggleModal={toggleModal} handleDeleteTrainer={handleDeleteTrainer}/>}
-        <p>{trainer.name}</p>
+        <h2 className="view-trainer__intro">It's {trainer.name} and {trainer.favouritePokemon}!</h2>
         <div className="view-trainer__buttons">
           <Link to={`/edit-trainer/${trainer.id}`}>
-            <Button style={"blue medium"} buttonText={"Edit trainer"} />
+            <Button style={"button blue large"} buttonText={"Edit trainer"} />
           </Link>
-        <Button buttonFunction={toggleModal} style={"red medium"} buttonText={"Delete Trainer"}/>
+        <Button buttonFunction={toggleModal} style={"button red large"} buttonText={"Delete Trainer"}/>
         </div>
       </div>
       </div>

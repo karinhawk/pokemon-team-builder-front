@@ -47,9 +47,9 @@ function App() {
         <Route path="/pokemon/:id" element={<PokemonPage pokemonArr={pokemon}/>} />
         <Route path="/team" element={<Team pokemonArr={pokemon}/>}/>
         <Route path="/create-trainer" element={<CreateTrainer />}/>
-        <Route path="/view-trainer/:id" element={<ViewTrainer />}/>
+        <Route path="/view-trainer/:id" element={<ViewTrainer pokemon={pokemon} />}/>
         <Route path="/edit-trainer/:id" element={<EditTrainer />} />
-        <Route path="/" element={<Home />}/>
+        <Route path="/" element={<Home pokemon={pokemon} />}/>
       </Routes> 
       </div> 
     </Router>

@@ -1,47 +1,32 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
-a {
-    text-decoration: none;
-}
-a:active {
-    color: black;
-}
 
 .card {
-    height: 50vh;
+    height: 55vh;
     width: 20vw;
-    position: relative;
     margin: 1rem;
     padding: 1rem;
+    position: absolute;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-
-    &__name {
-        font-size: 2rem;
-        color: black;
-    }
 
     &__image {
         height: 20vh;
-        margin: 2rem;
         width: auto;        
     }
-}
 
-.hide {
-    display: none;
-}
+    &__pokediv {
+        width: 17.5vw;
+        display: flex;
+        justify-content: flex-start;
+    }
 
-.card:hover + .hide {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    &__pokeball {
+        position: relative;
+        z-index: 1;
+        top: 50;
+        height: 1.5rem;
+        width: auto;
+    }
 }

@@ -1,35 +1,45 @@
+@use "/src/variables" as *;
+
 .button {
     border: none;
     border-radius: 1rem;
 }
 
-.medium {
-    height: 2rem;
+.small {
+    height: fit-content;
     width: fit-content;
-    padding-left: 1rem;
-    padding-right: 1rem;
+}
+
+.medium {
+    height: fit-content;
+    width: fit-content;
+    padding: 1rem;
     font-size: 1rem;
+    
 }
 
 .large {
-    height: 4rem;
+    height: fit-content;
     width: fit-content;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding: 1.5rem;
     font-size: 2rem;
 }
 
 .red {
-    background-color: rgb(237, 86, 86);
+    background-color: $color-red;
 }
 
 .blue {
-    background-color: rgb(143, 179, 255);
+    background-color: $color-blue;
 }
 
 .green {
-    background-color: rgb(116, 238, 78);
+    background-color: $color-green;
     &:hover {
         background-color: rgb(57, 193, 57);
     }
+}
+
+.yellow {
+    background-color: $color-yellow;
 }

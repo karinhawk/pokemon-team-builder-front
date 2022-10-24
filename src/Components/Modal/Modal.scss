@@ -1,12 +1,14 @@
+@use "/src/variables" as *;
+
 .modal {
-    background-color: rgba(black, 0.8);
+    background-color: rgba($color-black, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
   
     &__content {
         position: relative;
-        background-color: rgb(223, 240, 218);
+        background-color: $color-white;
         width: 30%;
         height: 30vw;
         border-radius: 15px;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Form from "../../Components/Form/Form";
 import "./EditTrainer.scss"
 
@@ -7,6 +7,7 @@ const EditTrainer = () => {
 
     const { id } = useParams();
     const [trainer, setTrainer] = useState([]);
+    const navigate = useNavigate();
 
     const url = window.location.pathname.split('/').pop();
 
@@ -28,6 +29,8 @@ const EditTrainer = () => {
            });
            console.log(trainer);
            setTrainer(trainer)
+           navigate(`/view-trainer/${id}`)
+          window.location.reload();
          };
 
       useEffect(() => {

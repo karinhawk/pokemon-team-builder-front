@@ -23,7 +23,6 @@ const Trainer = () => {
     });
     const data = await response.json();
     console.log(data);
-    // getTrainer();
     navigate("/")
     window.location.reload();
   };

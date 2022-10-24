@@ -1,17 +1,38 @@
-@import "node_modules/bootstrap/scss/bootstrap";
+@use "/src/variables" as *;
 
 
 .nav {
     height: 8vh;
     width: 100vw;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background-color: rgb(245, 241, 233);
+    justify-content: center;
+    background-color: $color-yellow;
+
+    &__content {
+        height: 8vh;
+        width: 50vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        list-style: none;
+        text-decoration: none;
+    }
+    &__item {
+        text-decoration: none;
+    }
+    &__link {
+        font-size: 2rem;
+        color: $color-red;
+        transition: 0.1s ease-in-out;
+        
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
 }
 
-.nav-item {
-    font-weight: 700;
-    color: black;
-}
+
+
+
+
 

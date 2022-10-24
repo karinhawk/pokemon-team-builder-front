@@ -1,11 +1,20 @@
 .pokemon-page {
-    height: 100%;
+    height: 84vh;
     width: 100vw;
+    margin-top: 9.3rem;
     padding: 4rem;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
+
+    &__left {
+        height: 80vh;
+        width: 45vw;
+    }
+
+    &__right {
+        width: 40vw;
+    }
 
     &__image {
         height: 45vh;
@@ -14,7 +23,7 @@
     }
 
     &__heading {
-        font-size: 4rem;
+        font-size: 5rem;
     }
 
     &__id {

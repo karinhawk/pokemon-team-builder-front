@@ -1,10 +1,14 @@
-import React from 'react'
 import "./Header.scss"
+import pokeball from "../../assets/pokeball.png"
 
 const Header = () => {
   return (
     <div className='header'>
-        <img src="" alt="" />
+      <div className="header__content">
+        <img src={pokeball} alt="a picture of a bright red pokeball" className="header__image" />
+        <h1 className="header__title">PokéVault</h1>
+        <img src={pokeball} alt="a picture of a bright red pokeball" className="header__image" />
+      </div>
     </div>
   )
 }

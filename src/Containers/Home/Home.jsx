@@ -4,11 +4,14 @@ import trainer1 from "../../assets/gold.png"
 import trainer2 from "../../assets/may.png"
 import { Link } from "react-router-dom"
 import Button from "../../Components/Button/Button"
+import Pending from "../../Components/Pending/Pending"
 
-const Home = () => {
+const Home = ({pokemon}) => {
 
   const [trainer, setTrainer] = useState([]);
   const [showLink, setShowLink] = useState(true);
+  const [favPokemon, setFavPokemon] = useState();
+  const [pending, setPending] = useState(true);
 
   const url = window.location.pathname.split('/').pop();
 
@@ -17,14 +20,23 @@ const Home = () => {
     const data = await res.json()
     setTrainer(data)
     console.log(trainer);
-    if (trainer.length > 0) {
+    if(trainer.length > 0) {
       console.log("something");
       setShowLink(false)
     } else if (trainer.length == 0) {
       console.log("nothing");
       setShowLink(true)
     }
+    showPokemon(pokemon)
   }
+
+  const showPokemon = (pokemon) => {
+    const trainerFav = trainer[0].favouritePokemon.toLowerCase();
+    const favouritePokemon = pokemon.find((pokemon) => { return pokemon.name.toLowerCase() == trainerFav });
+    const pic = favouritePokemon.hires;
+    setFavPokemon(pic);
+    setPending(false);
+}
 
   useEffect(() => {
     getTrainer()
@@ -33,6 +45,7 @@ const Home = () => {
 
   return (
     <div className='home'>
+      {pending && <Pending/>}
       {showLink && <div className='home__create-trainer'>
         <h2>It looks like you haven't registered as a trainer yet!</h2>
         <Link to='/create-trainer'>
@@ -42,12 +55,13 @@ const Home = () => {
       {!showLink &&
       <div className="home__customised">
         <h2 className="home__customised__greeting">Hey {trainer[0].name}!</h2>
+        <img className="home__customised__image" src={favPokemon} alt={pokemon.name}/>
         <div className="home__customised__buttons">
           <Link to='/team'>
-          <Button style={"large blue"} buttonText={"Check out Team"}/>
+          <Button style={"button large blue"} buttonText={"Check out Team"}/>
           </Link>
           <Link to={`/view-trainer/${trainer[0].id}`}>
-          <Button style={"large yellow"} buttonText={"Check the mirror"}/>
+          <Button style={"button large yellow"} buttonText={"Check the mirror"}/>
           </Link>
         </div>
       </div>}

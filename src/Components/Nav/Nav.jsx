@@ -27,28 +27,30 @@ const Nav = () => {
 
 
   return (
-    <ul className="nav">
+    <div className='nav'>
+    <ul className="nav__content">
       <Link to="/">
-        <li className="nav-item">
-          <h2 className="nav-link">Home</h2>
+        <li className="nav__item">
+          <h2 className="nav__link">Home</h2>
         </li>
       </Link>
       <Link to="/team">
-        <li className="nav-item">
-          <h2 className="nav-link">Team</h2>
+        <li className="nav__item">
+          <h2 className="nav__link">Team</h2>
         </li>
       </Link>
       <Link to="/pokedex">
-      <li className="nav-item">
-        <h2 className="nav-link">Pokedex</h2>
+      <li className="nav__item">
+        <h2 className="nav__link">Pokedex</h2>
       </li>
       </Link>
       {showLink && <Link to={`/view-trainer/${trainer[0].id}`}>
-      <li className="nav-item">
-        <h2 className="nav-link">Trainer</h2>
+      <li className="nav__item">
+        <h2 className="nav__link">Trainer</h2>
       </li>
       </Link>}
     </ul>
+    </div>
   )
 }
 

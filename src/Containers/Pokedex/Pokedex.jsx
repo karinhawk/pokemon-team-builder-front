@@ -1,13 +1,15 @@
 import "./Pokedex.scss"
 import CardList from "../CardList/CardList"
 import SearchBar from "../../Components/SearchBar/SearchBar"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Pokedex = ({pokemon}) => {
 
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState(null);
+  const [pending, setPending] = useState(true);
+
 
   const handleInput = (event) => {
     const cleanInput = event.target.value.toLowerCase();

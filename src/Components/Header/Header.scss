@@ -1,3 +1,5 @@
+@use "/src/variables" as *;
+
 * {
     margin: 0;
     padding: 0;
@@ -6,5 +8,25 @@
 .header {
     height: 8vh;
     width: 100vw;
-    background-color: rgb(245, 233, 129);
+    background-color: $color-blue;
+    display: flex;
+    justify-content: center;
+
+    &__content {
+        width: 25vw;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    &__title {
+        font-family: $font-secondary;
+        font-size: 3.5rem;
+        color: $color-white;
+    }
+
+    &__image {
+        height: 7vh;
+        width: auto;
+    }
 }

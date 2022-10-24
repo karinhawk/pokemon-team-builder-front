@@ -1,26 +1,41 @@
-@import "node_modules/bootstrap/scss/bootstrap";
+@use "/src/variables" as *;
 
 .view-trainer {
-    // height: 100%;
-    // width: 100vw;
+    height: 100vh;
+    margin-top: 5rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 
+    &__images {
+        width: 60vw;
+    }
+
     &__avatar {
-        height: 80vh;
+        height: 45rem;
         width: auto;
     }
 
-    &__main {
-        height: 60vh;
+    &__pokemon {
+        height: 30rem;
+        width: auto;
+    }
+
+    &__text {
+        height: 40vh;
+        width: 30vw;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
     }
 
+    &__intro {
+        font-size: 5rem;
+    }
+
     &__buttons {
+        width: 25vw;
         display: flex;
         justify-content: space-around;
         align-items: center;

@@ -1,7 +1,41 @@
+@use "/src/variables" as *;
+
 .home {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 
     &__create-trainer {
-        height: 30vh;
+        height: 50vh;
         width: 60vw;
+        margin-top: 10rem;
+    }
+
+    &__customised {
+        height: 70vh;
+        width: 70vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 10rem;
+
+        &__greeting {
+            font-size: 4rem;
+            color: $color-black;
+        }
+
+        &__image {
+            height: 50vh;
+            width: auto;
+        }
+        &__buttons {
+            width: 40vw;
+            display: flex;
+            justify-content: space-around;
+        }
     }
 }
