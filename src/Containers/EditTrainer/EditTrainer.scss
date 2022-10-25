@@ -1,5 +1,17 @@
+@use "/src/variables" as *;
+
 .edit {
+    height: 84vh;
     display: flex;
     justify-content: center;
-    margin-top: 10rem;
+    margin-top: 12.5rem;
+
+    &__avatar {
+        height: 60vh;
+        margin-top: 6rem;
+    }
+
+    &__form {
+        margin-top: 4rem;
+    }
 }

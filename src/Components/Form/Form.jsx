@@ -2,7 +2,7 @@ import { useState } from "react"
 import Button from "../Button/Button"
 import "./Form.scss"
 
-const Form = ({ defaultFormState, handleSubmit, formFunction }) => {
+const Form = ({ defaultFormState, handleSubmit, formFunction, handleChangeAvatar }) => {
 
     const [trainer, setTrainer] = useState(defaultFormState);
 
@@ -12,14 +12,14 @@ const Form = ({ defaultFormState, handleSubmit, formFunction }) => {
         if (Object.values(trainer).some(value => !value)) {
             alert("you haven't filled out some of the boxes!");
             return;
-        }
-
+        } else {
         handleSubmit(trainer);
+        }
     };
 
     return (
         <form action="submit" onSubmit={handleValidation} className='form'>
-            <h2>{formFunction} Your Trainer!</h2>
+            <h2 className="form__heading">{formFunction} Your Trainer!</h2>
             <div className="form__label-input">
                 <label className="form__label" htmlFor="name-input">Name</label>
                 <input
@@ -32,12 +32,12 @@ const Form = ({ defaultFormState, handleSubmit, formFunction }) => {
             </div>
             <div className="form__label-input">
                 <label className="form__label" htmlFor="select-input">Choose a look</label>
-                <select className="form__select" name="select-input" onClick={event => setTrainer({ ...trainer, avatar: event.target.value })}>
+                <select className="form__select" name="select-input" onClick={event => setTrainer({ ...trainer, avatar: event.target.value })} onChange={handleChangeAvatar}>
                     <option disabled selected>select your trainer avatar!
                     </option>
-                    <option value={1}>1
+                    <option value={1}>Girl
                     </option>
-                    <option value={2}>2
+                    <option value={2}>Boy
                     </option>
                 </select>
             </div>
@@ -51,7 +51,7 @@ const Form = ({ defaultFormState, handleSubmit, formFunction }) => {
                     onInput={event => setTrainer({ ...trainer, favouritePokemon: event.target.value })}
                 />
             </div>
-            <Button buttonText={"Create!"} style={"button medium blue"} type={"submit"} />
+            <Button buttonText={formFunction} style={"button large green"} type={"submit"} />
         </form>
     )
 }

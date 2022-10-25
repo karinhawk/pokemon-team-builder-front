@@ -21,16 +21,22 @@
 .large {
     height: fit-content;
     width: fit-content;
-    padding: 1.5rem;
+    padding: 1rem 2.5rem;    
     font-size: 2rem;
 }
 
 .red {
     background-color: $color-red;
+    &:hover {
+        background-color: rgb(211, 42, 42);
+    }
 }
 
 .blue {
     background-color: $color-blue;
+    &:hover {
+        background-color: rgb(34, 91, 189);
+    }
 }
 
 .green {
@@ -42,4 +48,7 @@
 
 .yellow {
     background-color: $color-yellow;
+    &:hover {
+        background-color: rgb(231, 223, 69);
+    }
 }

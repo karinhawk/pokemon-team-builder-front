@@ -8,19 +8,23 @@ const Pokedex = ({pokemon}) => {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState(null);
-  const [pending, setPending] = useState(true);
+  const [noPokemon, setNoPokemon] = useState(false);
 
 
   const handleInput = (event) => {
     const cleanInput = event.target.value.toLowerCase();
     setSearchTerm(cleanInput);
-    console.log(searchTerm);
 
     if (searchTerm !== "") {
       const filteredPokemon = pokemon.filter((pokemon) => {
         return pokemon.name.toLowerCase().includes(searchTerm);
       })
       setFilter(filteredPokemon);
+      if(filteredPokemon.length === 0) {
+        setNoPokemon(true)
+      } else {
+        setNoPokemon(false)
+      }
     } else {
       setFilter(pokemon);
     }
@@ -30,7 +34,10 @@ const Pokedex = ({pokemon}) => {
   return (
     <div className="pokedex">
       <SearchBar searchTerm={searchTerm} handleInput={handleInput}/>
-      <CardList pokemonArr={searchTerm.length < 1 ? pokemon : filter} />
+      {!noPokemon &&  <CardList pokemonArr={searchTerm.length < 1 ? pokemon : filter} />}
+      {noPokemon && <div className="pokedex__none">
+        <h3 className="pokedex__none__text">Sorry there are no matching pokemon</h3>
+        </div>}
     </div>
   )
 }

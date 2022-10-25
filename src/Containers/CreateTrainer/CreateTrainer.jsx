@@ -22,7 +22,6 @@ const Trainer = () => {
       body: JSON.stringify(trainer),
     });
     const data = await response.json();
-    console.log(data);
     navigate("/")
     window.location.reload();
   };

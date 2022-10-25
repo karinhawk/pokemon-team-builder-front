@@ -14,10 +14,11 @@ const Team = () => {
     setPokemon(data)
   }
 
-  const team = pokemon.filter((pokemon) => {
+  let team = pokemon.filter((pokemon) => {
     return !!pokemon.trainer;
   })
   console.log(team);
+  team = team.slice(0, 6);
 
 
   useEffect(()=>{
@@ -37,14 +38,14 @@ const Team = () => {
             <img className="team__pokemon__image" src={pokemon.sprite} alt={pokemon.name} />
           {showButtons && <div>
             <Link key={pokemon.id} to={`/pokemon/${pokemon.id}`}>
-            <Button style={"blue medium"} buttonText={"View"}/>
+            <Button style={"button green medium"} buttonText={"View"}/>
             </Link>
             </div>}
           </div>
         )
       })}
     </div>
-    <Button buttonText={"Edit Team"} style={"blue medium"} buttonFunction={toggleButtons}/>
+    <Button buttonText={"Edit Team"} style={"button blue medium"} buttonFunction={toggleButtons}/>
     </div>
   )
 }

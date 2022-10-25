@@ -7,8 +7,8 @@
     justify-content: center;
 
     &__div {
-        width: 80vw;
-        height: fit-content;
+        width: 50vw;
+        height: 30vh;
         display: flex;
         justify-content: space-around;
     }
@@ -19,7 +19,7 @@
         margin: 1rem;
 
         &__image {
-            height: 5rem;
+            height: 10rem;
             width: auto;
             transition: transform 0.2s ease-in-out;
 
