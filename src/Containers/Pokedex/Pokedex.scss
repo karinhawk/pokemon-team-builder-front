@@ -5,7 +5,23 @@
 
 .pokedex {
     height: fit-content;
-    margin-top: 12.5rem;
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__loading {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        &__pokeball {
+            height: 40vh;
+        }
+    }
 
     &__none {
         height: 80.5vh;

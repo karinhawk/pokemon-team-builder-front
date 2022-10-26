@@ -8,9 +8,7 @@ const CardList = ({pokemonArr}) => {
     <>
       <section className='card-list'>
         {pokemonArr.map(pokemon => (
-                <Link key={pokemon.id} to={`/pokemon/${pokemon.id}`}>
-                <Card pokemon={pokemon}/>
-                </Link>
+                <Card pokemon={pokemon} id={pokemon.id}/>
         ))}
         </section>
     </>

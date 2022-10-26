@@ -1,15 +1,26 @@
 @use "/src/variables" as *;
 
+@keyframes navJiggle {
+    100% {
+        transform: rotate(3deg);
+    }
+    50% {
+        transform: rotate(-3deg);
+    }
+    100% {
+        transform: rotate(3deg);
+    }
+}
 
 .nav {
-    height: 8vh;
+    height: 9vh;
     width: 100vw;
     display: flex;
     justify-content: center;
     background-color: $color-yellow;
 
     &__content {
-        height: 8vh;
+        height: 9vh;
         width: 50vw;
         display: flex;
         align-items: center;
@@ -23,10 +34,10 @@
     &__link {
         font-size: 2rem;
         color: $color-red;
-        transition: 0.1s ease-in-out;
+        font-weight: 700;
         
         &:hover {
-            transform: scale(1.2);
+            animation: navJiggle 0.3s 1;
         }
     }
 }

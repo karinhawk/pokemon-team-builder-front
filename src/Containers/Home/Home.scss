@@ -1,5 +1,18 @@
 @use "/src/variables" as *;
 
+@keyframes jiggle {
+    100% {
+        transform: translateY(-1rem);
+    }
+    50% {
+        transform: translateY(1rem);
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
 .home {
     height: 100vh;
     display: flex;
@@ -9,13 +22,32 @@
     position: relative;
 
     &__create-trainer {
-        height: 40vh;
-        width: 60vw;
+        height: 30vh;
+        width: 20vw;
         margin-top: 10rem;
+        border: 0.3rem solid rgb(81, 192, 30);
+        border-radius: 1rem;
+        background-color: $color-green;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+
+        &__message {
+            width: 17vw;
+            font-weight: 700;
+        }
+
+        &__link {
+            color: $color-white;
+            padding: 1rem;
+            background-color: green;
+            border-radius: 1rem;
+        }
     }
 
     &__customised {
-        height: 70vh;
+        height: 75vh;
         width: 70vw;
         display: flex;
         flex-direction: column;
@@ -25,12 +57,17 @@
 
         &__greeting {
             font-size: 4rem;
-            color: $color-black;
+            color: $color-blue;
+            text-shadow: 3px 3px rgb(59, 53, 116);
         }
 
         &__image {
             height: 50vh;
             width: auto;
+
+            &:hover {
+                animation: jiggle 0.2s 3;
+            }
         }
         &__buttons {
             width: 40vw;

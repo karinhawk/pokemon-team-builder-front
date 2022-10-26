@@ -15,11 +15,14 @@ const Form = ({ defaultFormState, handleSubmit, formFunction, handleChangeAvatar
         } else {
         handleSubmit(trainer);
         }
-    };
+    }
+
+    
 
     return (
         <form action="submit" onSubmit={handleValidation} className='form'>
             <h2 className="form__heading">{formFunction} Your Trainer!</h2>
+            <div className="form__content">
             <div className="form__label-input">
                 <label className="form__label" htmlFor="name-input">Name</label>
                 <input
@@ -50,6 +53,7 @@ const Form = ({ defaultFormState, handleSubmit, formFunction, handleChangeAvatar
                     value={trainer.favouritePokemon}
                     onInput={event => setTrainer({ ...trainer, favouritePokemon: event.target.value })}
                 />
+            </div>
             </div>
             <Button buttonText={formFunction} style={"button large green"} type={"submit"} />
         </form>

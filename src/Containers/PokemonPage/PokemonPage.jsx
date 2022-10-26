@@ -11,23 +11,20 @@ const PokemonPage = ({ pokemonArr }) => {
   const navigate = useNavigate();
 
   const chosenPokemon = pokemonArr.find((pokemon) => { return pokemon.id == id });
+console.log(chosenPokemon);
 
-  const getPokemonById = async (id) => {
-    const response = await fetch(`http://localhost:8080/pokemon/${id}`);
-    const data = await response.json();
-    setPokemon(data);
-    if (chosenPokemon.trainer !== undefined && chosenPokemon.trainer !== null) {
-      setText("Remove from Team")
-    } else {
-      setText("Add to Team")
-    }
-  };
+  console.log(chosenPokemon.type);
+
+    const type1 = chosenPokemon.type.split(",").splice(0,1).toString();
+    const type2 = chosenPokemon.type.split(", ").splice(1,2).toString();
 
 
-  useEffect(() => {
-    getPokemonById(id);
-  }, []);
-
+    // if(!chosenPokemon.trainer == undefined || !chosenPokemon.trainer == null){
+    //   setText("Remove from Team")
+    // } else {
+    //   setText("Add to Team")
+    // }
+  
 
   const updatePokemon = async chosenPokemon => {
     const response = await fetch(`http://localhost:8080/pokemon/${id}`, {
@@ -44,37 +41,23 @@ const PokemonPage = ({ pokemonArr }) => {
     window.location.reload();
   }
 
-  const extractType1 = () => {
-    const types = pokemon.type;
-    const type1 = types.split(",").splice(0, 1).join("");
-    return String(type1);
-  }
-
-  const extractType2 = () => {
-    const types = pokemon.type;
-    const type2 = types.split(", ").splice(1, 2).join("");
-    return String(type2);
-  }
-
-
-
 
   return (
     <div className='pokemon-page'>
       <div className="pokemon-page__left">
-        <img className="pokemon-page__image" src={pokemon.hires} alt="" />
-        <h2 className="pokemon-page__heading">{pokemon.name}</h2>
-        <h3 className="pokemon-page__id">{pokemon.id}</h3>
-        <h3 className="pokemon-page__species">{pokemon.species}</h3>
+        <img className="pokemon-page__image" src={chosenPokemon.hires} alt="" />
+        <h2 className="pokemon-page__heading">{chosenPokemon.name}</h2>
+        <h3 className="pokemon-page__id">{chosenPokemon.id}</h3>
+        <h3 className="pokemon-page__species">{chosenPokemon.species}</h3>
       </div>
       <div className="pokemon-page__right">
       <div className="pokemon-page__types">
-          <h3 className={`pokemon-page__types__1 ${extractType1()}`}>{extractType1()}</h3>
-          <h3 className={`pokemon-page__types__2 ${extractType2()}`}>{extractType2()}</h3>
+         <h3 className={`pokemon-page__types__1 ${type1} `}>{type1}</h3>
+         <h3 className={`pokemon-page__types__2 ${type2}`}>{type2}</h3>         
         </div>
-        <h3 className="pokemon-page__description">{pokemon.description}</h3>
+        <h3 className="pokemon-page__description">{chosenPokemon.description}</h3>
         <div className="pokemon-page__button-div">
-          <Button style={"button large green"} buttonText={text} buttonFunction={updatePokemon} />
+          <Button style={`button large ${chosenPokemon.trainer ? "red" : "green"}`} buttonText={chosenPokemon.trainer ? "Remove from Team" : "Add to Team"} buttonFunction={updatePokemon} />
           <Link to="/pokedex">
             <Button style={"button medium blue"} buttonText={"BACK TO POKEDEX"} />
           </Link>

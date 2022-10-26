@@ -15,27 +15,37 @@ import EditTrainer from './Containers/EditTrainer/EditTrainer';
 
 function App() {
 
-
-//paginate pokedex
-//pokemon types colours
-//make pretty!
-//hover on card to reveal name?
-//make header fancy
-
-
   const [pokemon, setPokemon] = useState([]);
+  const [types, setTypes] = useState([]);
+  const [selectedType, setSelectedType] = useState("");
 
   const getPokemon = async () => {
-    const res = await fetch("http://localhost:8080/pokemon")
-    const data = await res.json()
-    setPokemon(data)
-  }
+    let response;
+    if(selectedType == ""){
+      response = await fetch("http://localhost:8080/pokemon");
+    } else {
+      response = await fetch(`http://localhost:8080/pokemon?type=${selectedType}`)
+    }
+    const data = await response.json();
+    setPokemon(data);
+  };
+
+  console.log(selectedType);
+
+  const getTypes = async () => {
+    const response = await fetch("http://localhost:8080/pokemon/types")
+    const data = await response.json();
+    setTypes(data);
+  };
 
   console.log(pokemon);
 
   useEffect(()=>{
     getPokemon()
-  },[])
+    getTypes()
+  },[types])
+
+  const handleSelectType = event => setSelectedType(event.target.value);
  
   return (
     <div className="app">
@@ -43,7 +53,7 @@ function App() {
       <Top />
       <div className='main-content'>
       <Routes>
-        <Route path="/pokedex" element={<Pokedex pokemon={pokemon}/>} /> 
+        <Route path="/pokedex" element={<Pokedex pokemon={pokemon} types={types} handleSelectType={handleSelectType}/>} /> 
         <Route path="/pokemon/:id" element={<PokemonPage pokemonArr={pokemon}/>} />
         <Route path="/team" element={<Team pokemonArr={pokemon}/>}/>
         <Route path="/create-trainer" element={<CreateTrainer />}/>

@@ -5,5 +5,12 @@
     &__image {
         height: 7.5rem;
         width: auto;
+        animation: turn 2s infinite;
+    }
+}
+
+@keyframes turn {
+    100% {
+        transform: rotate(360deg);
     }
 }

@@ -27,13 +27,17 @@
 
 .red {
     background-color: $color-red;
+    color: $color-white;
+    transition: 0.1s ease-in-out;
     &:hover {
-        background-color: rgb(211, 42, 42);
+        background-color: rgb(189, 52, 52);
     }
 }
 
 .blue {
     background-color: $color-blue;
+    color: $color-white;
+    transition: 0.1s ease-in-out;
     &:hover {
         background-color: rgb(34, 91, 189);
     }
@@ -41,6 +45,7 @@
 
 .green {
     background-color: $color-green;
+    transition: 0.1s ease-in-out;
     &:hover {
         background-color: rgb(57, 193, 57);
     }
@@ -48,7 +53,8 @@
 
 .yellow {
     background-color: $color-yellow;
+    transition: 0.1s ease-in-out;
     &:hover {
-        background-color: rgb(231, 223, 69);
+        background-color: rgb(199, 192, 59);
     }
 }

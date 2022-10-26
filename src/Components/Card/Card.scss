@@ -1,4 +1,16 @@
 
+@keyframes cardJiggle {
+    100% {
+        transform: rotate(2deg);
+    }
+    50% {
+        transform: rotate(-2deg);
+    }
+    25% {
+        transform: rotate(2deg);
+    }
+}
+
 .card {
     width: 20vw;
     margin: 1rem;
@@ -9,8 +21,12 @@
     justify-content: center;
     align-items: center;
 
+    &:hover {
+        animation: cardJiggle 0.1s 3;
+    }
+
     &__image {
-        height: 25vh;
+        max-height: 25vh;
         width: auto;        
     }
 
