@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Pokémon Team Builder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src="./src/assets/frontend1.png" height="150px"/>
+<h3>This website is yet to be deployed</h3>
 
-## Available Scripts
+## Table of Contents
+- [Brief](#brief)
+- [About](#about)
+- [Screenshots](#screenshots)
+- [Languages](#languages)
+- [Code of Note](#code_of_note)
+- [Bugs to fix](#bugs_to_fix)
 
-In the project directory, you can run:
 
-### `npm start`
+## Brief <a name = "brief"></a>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Built entirely in React
+2. Repository on GitHub
+3. Use the Punk API (after using the data file first) (https://punkapi.com/)
+4. Search functionality
+5. Filter functionality:    -High Alcohol (ABV value greater than 6%)
+                            ; Classic Range (Was first brewed before 2010)
+                            ; High Acidity (pH lower than 4) 
+4. Test where possible (RTL)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## About <a name = "about"></a>
 
-### `npm test`
+An app built entirely in React which showcases different beers from Brewdog. Built using PunkAPI, an open-source API of Brewdog beers. The list of beers has been mapped to the interface, and can be searched through via a searchbox, and filtered using checkboxes. The beers can be filtered by the classics range, high ABV content, and high acidity. Only one filter can be applied at a time. A beer can be clicked on to access more information about it through routing to a new page. The Card component and the FilterItem component have been tested using the React Testing Library.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Screenshots <a name = "screenshots"></a>
 
-### `npm run build`
+<img src="./src/images/screenshot1.png" height="150px"/>
+<img src="./src/images/screenshot2.png" height="150px"/>
+<img src="./src/images/screenshot3.png" height="150px"/>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Languages <a name = "languages"></a>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- ReactJs (Rendering HTML components)
+- SCSS
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Code of Note <a name = "code_of_note"></a>
 
-### `npm run eject`
+- useState()
+- useEffect()
+- useParam()
+- search/filter
+- Routing
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Bugs to fix <a name = "bugs_to_fix"></a>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Cannot refresh whilst on specific beer page (fix: could implement a state)

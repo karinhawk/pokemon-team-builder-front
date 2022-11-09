@@ -1,5 +1,22 @@
 @use "/src/variables" as *;
 
+@keyframes pokemonJump {
+    0%,
+    25% {
+        transform: translateY(2rem);
+    }
+    50% {
+        transform: translateY(-1rem);
+    }
+    75% {
+        transform: translateY(2rem);
+    }
+    100% {
+        transform: translateY(-0.5rem);
+    }
+
+}
+
 .view-trainer {
     height: 100vh;
     margin-top: 5rem;
@@ -19,6 +36,10 @@
     &__pokemon {
         height: 30rem;
         width: auto;
+
+        &:hover {
+            animation: pokemonJump 1s infinite alternate;
+        }
     }
 
     &__text {
@@ -28,6 +49,8 @@
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
+        color: $color-green;
+        text-shadow: -2px 0 $color-dark, 0 2px $color-dark, 2px 0 $color-dark, 0 -2px $color-dark;
     }
 
     &__intro {

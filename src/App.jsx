@@ -30,15 +30,12 @@ function App() {
     setPokemon(data);
   };
 
-  console.log(selectedType);
-
   const getTypes = async () => {
     const response = await fetch("http://localhost:8080/pokemon/types")
     const data = await response.json();
     setTypes(data);
   };
 
-  console.log(pokemon);
 
   useEffect(()=>{
     getPokemon()

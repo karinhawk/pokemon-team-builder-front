@@ -1,8 +1,9 @@
 @use "/src/variables" as *;
 .app {
   text-align: center;
-  background-color: $color-white;
+  background-image: url(./assets/togepi.jpeg);
   font-family: $font-primary;
+  
 }
 
 

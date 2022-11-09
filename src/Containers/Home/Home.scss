@@ -57,8 +57,12 @@ a {
 
         &__greeting {
             font-size: 4rem;
-            color: $color-blue;
-            text-shadow: 3px 3px rgb(59, 53, 116);
+            color: $color-red;
+            text-shadow: 3px 3px $color-dark;
+        }
+
+        &__row {
+            display: flex;
         }
 
         &__image {

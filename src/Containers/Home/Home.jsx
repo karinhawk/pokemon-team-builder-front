@@ -48,11 +48,11 @@ const Home = ({ pokemon }) => {
         {!showLink &&
           <div className="home__customised">
             <h2 className="home__customised__greeting">Hey {trainer[0].name}!</h2>
-            <img className="home__customised__image" src={favPokemon} alt={pokemon.name} />
-            <div className="home__customised__buttons">
+            <div className="home__customised__row">
               <Link to='/team'>
                 <Button style={"button large blue"} buttonText={"Check out Team"} />
               </Link>
+              <img className="home__customised__image" src={favPokemon} alt={pokemon.name} />
               <Link to={`/view-trainer/${trainer[0].id}`}>
                 <Button style={"button large yellow"} buttonText={"Check the mirror"} />
               </Link>

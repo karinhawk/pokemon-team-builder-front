@@ -4,10 +4,16 @@
 }
 
 .card-list {
-    width: 100vw;
+    width: auto;
     height: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+}
+
+@media screen and (max-width: 720px) {
+    .card-list {
+        flex-direction: column;
+    }
 }

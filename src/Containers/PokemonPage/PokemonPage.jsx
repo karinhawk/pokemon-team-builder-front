@@ -18,12 +18,6 @@ console.log(chosenPokemon);
     const type1 = chosenPokemon.type.split(",").splice(0,1).toString();
     const type2 = chosenPokemon.type.split(", ").splice(1,2).toString();
 
-
-    // if(!chosenPokemon.trainer == undefined || !chosenPokemon.trainer == null){
-    //   setText("Remove from Team")
-    // } else {
-    //   setText("Add to Team")
-    // }
   
 
   const updatePokemon = async chosenPokemon => {
